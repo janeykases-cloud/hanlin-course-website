@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102f46">
+  <meta name="description" content="三年級生活任務島 RPG 跨領域學習網站，以社會領域為核心，統整國語文與數學。">
+  <title>三年級生活任務島 RPG</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要內容</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="回到生活任務島首頁">
+      <span class="brand-mark" aria-hidden="true">島</span>
+      <span><strong>生活任務島</strong><small>三年級跨領域 RPG</small></span>
+    </a>
+    <div class="status-cluster" aria-label="玩家狀態">
+      <span class="status-pill"><span aria-hidden="true">✦</span> <b id="xpValue">0</b> XP</span>
+      <span class="status-pill"><span aria-hidden="true">◆</span> <b id="crystalValue">0</b> 智慧晶石</span>
+      <button class="icon-button" id="soundToggle" type="button" aria-pressed="false" aria-label="開啟音效">♪</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow">翰林版跨領域課程｜三年級</p>
+        <h1 id="heroTitle">三年級<br><span>生活任務島</span></h1>
+        <p class="hero-lead">小航的一天被「混亂魔王」打亂了。蒐集證據、找到支援、排好時間，和小航一起把生活重新整理好！</p>
+        <form class="hero-form" id="heroForm">
+          <label for="playerName">勇者名字</label>
+          <div class="input-row">
+            <input id="playerName" name="playerName" maxlength="12" autocomplete="nickname" placeholder="輸入暱稱，例如：小晴" required>
+            <button class="primary-button" type="submit">進入任務島 <span aria-hidden="true">→</span></button>
+          </div>
+          <p class="privacy-note">暱稱與闖關進度只儲存在這台裝置，不會上傳，也沒有公開排行榜。</p>
+        </form>
+        <div class="hero-metrics" aria-label="課程資訊">
+          <div><strong>5</strong><span>學習區域</span></div>
+          <div><strong>15</strong><span>最終戰題目</span></div>
+          <div><strong>80%</strong><span>獎章解鎖門檻</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="角色小航準備前往生活任務島">
+        <div class="radar-ring ring-one" aria-hidden="true"></div>
+        <div class="radar-ring ring-two" aria-hidden="true"></div>
+        <div class="character-card">
+          <div class="character-tag">PLAYER 01</div>
+          <img src="https://grade3-life-mission-island-rpg.janeykases.chatgpt.site/assets/xiaohang.png" alt="卡通角色小航，背著任務裝備準備出發">
+          <div class="character-hud"><b>小航</b><span>見習任務員｜需要你的協助</span></div>
+        </div>
+        <aside class="profile-glass" aria-label="小航角色基本資料">
+          <div class="profile-scan" aria-hidden="true"></div>
+          <div class="profile-status"><span></span> STATUS ONLINE</div>
+          <p class="profile-code">PROFILE DATABASE｜LM-03-XH</p>
+          <h2>小航 <small>XIAOHANG</small></h2>
+          <dl>
+            <div><dt>年級</dt><dd>國小三年級</dd></div>
+            <div><dt>角色</dt><dd>生活任務見習生</dd></div>
+            <div><dt>興趣</dt><dd>畫圖、觀察昆蟲、和同學合作</dd></div>
+            <div><dt>優勢</dt><dd>願意幫助別人、想像力豐富</dd></div>
+            <div><dt>本日挑戰</dt><dd>容易忘記用品、不確定順序、不敢主動求助</dd></div>
+          </dl>
+          <p class="profile-goal"><b>MISSION</b>｜安心完成一天的學習任務</p>
+        </aside>
+        <div class="floating-chip chip-a">證據分析 +20</div>
+        <div class="floating-chip chip-b">友善溝通 +20</div>
+      </div>
+    </section>
+
+    <section class="section-shell hidden" id="gameShell" aria-live="polite">
+      <nav class="chapter-nav" aria-label="任務島導覽">
+        <button class="nav-tab active" data-view="base" type="button">先備基地</button>
+        <button class="nav-tab" data-view="map" type="button">學習地圖</button>
+        <button class="nav-tab" data-view="final" type="button">最終戰</button>
+        <button class="nav-tab" data-view="honor" type="button">榮譽殿堂</button>
+      </nav>
+
+      <section class="view" id="mapView" data-view-panel="map" aria-labelledby="mapTitle">
+        <div class="section-heading">
+          <div><p class="eyebrow">MISSION MAP</p><h2 id="mapTitle">任務島學習地圖</h2></div>
+          <div class="progress-box"><span>島嶼修復度</span><strong id="overallPercent">0%</strong><div class="progress-track"><span id="overallBar"></span></div></div>
+        </div>
+        <p class="section-intro"><b id="welcomeName">勇者</b>，請先完成「先備基地」，再依學習脈絡逐區闖關。每一區的主線任務完成後，下一區才會開啟；支線任務可獲得額外晶石。</p>
+        <div class="map-path" id="mapPath"></div>
+        <div class="map-legend" aria-label="地圖圖例"><span><i class="dot open"></i>可進入</span><span><i class="dot done"></i>已完成</span><span><i class="dot locked"></i>尚未解鎖</span></div>
+      </section>
+
+      <section class="view active" id="baseView" data-view-panel="base" aria-labelledby="baseTitle">
+        <div class="section-heading"><div><p class="eyebrow">STARTER BASE</p><h2 id="baseTitle">先備基地</h2></div><span class="no-score">暖身題不計分</span></div>
+        <p class="section-intro">先確認你已準備好「看證據、排順序、找安全支援」三項能力。答錯可以看提示再試一次。</p>
+        <div id="prerequisiteGame" class="quest-stack"></div>
+      </section>
+
+      <section class="view" id="lessonView" data-view-panel="lesson" aria-live="polite"></section>
+
+      <section class="view" id="finalView" data-view-panel="final" aria-labelledby="finalTitle">
+        <div class="battle-banner">
+          <div><p class="eyebrow">FINAL BATTLE</p><h2 id="finalTitle">混亂魔王最終戰</h2><p>從社會、國語文與數學題目中選出正確答案。共 15 題，達 80 分即可通過。</p></div>
+          <div class="boss-orb" aria-hidden="true"><span>亂</span></div>
+        </div>
+        <div id="finalGate" class="gate-message"></div>
+        <form id="finalQuiz" class="final-quiz hidden"></form>
+        <div id="finalResult" class="result-panel hidden" aria-live="polite"></div>
+      </section>
+
+      <section class="view" id="honorView" data-view-panel="honor" aria-labelledby="honorTitle">
+        <div class="section-heading"><div><p class="eyebrow">HALL OF HONOR</p><h2 id="honorTitle">榮譽殿堂</h2></div></div>
+        <div id="honorContent"></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="feedbackDialog" class="feedback-dialog">
+    <div id="feedbackIcon" class="feedback-icon" aria-hidden="true">✓</div>
+    <h2 id="feedbackTitle">任務回饋</h2>
+    <p id="feedbackText"></p>
+    <form method="dialog"><button class="primary-button" id="feedbackClose" type="submit">繼續任務</button></form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer>
+    <p>三年級生活任務島｜以社會領域為核心，統整國語文與數學</p>
+    <button type="button" class="text-button" id="resetProgress">清除本機進度</button>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
