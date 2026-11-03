@@ -1,4 +1,4 @@
-# 翰林跨領域課程網站
+# 翰林三年級跨領域課程網站
 
 三年級「生活任務島」RPG 跨領域學習網站。
 
@@ -7,4 +7,7 @@
 - 包含任務島來信、同步童聲朗讀、主線與支線任務、知識戰鬥及榮譽獎章。
 - 網站內容適合國小三年級學生使用。
 
-正式網站：https://grade3-life-mission-island-rpg.janeykases.chatgpt.site/
+## 網站連結
+
+- 三年級 GitHub Pages：https://janeykases-cloud.github.io/hanlin-grade3-life-mission-island/
+- 教學網站：https://grade3-life-mission-island-rpg.janeykases.chatgpt.site/
